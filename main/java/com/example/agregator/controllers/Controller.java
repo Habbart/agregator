@@ -3,10 +3,7 @@ package com.example.agregator.controllers;
 
 import com.example.agregator.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -18,7 +15,13 @@ public class Controller {
      *  метод используется для получения прайса по универсальным координатам.
      */
     @GetMapping("/prices")
-    public void requestPrices(){}
+    public void requestPrices(@RequestParam(value = "user_id") Integer userId,
+                              @RequestParam(value = "start_place_point") String startLocation,
+                              @RequestParam(value = "finish_place_point") String endLocation,
+                              @RequestParam(value = "currency", required = false) Currency currency,
+                              @RequestParam(value = "lang", required = false) Language language){
+        service.getPrices(userId, startLocation, endLocation, currency, language);
+    }
 
     /**
      * метод проверки времени подачи автомобиля,

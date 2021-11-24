@@ -1,6 +1,7 @@
 package com.example.agregator.entity;
 
 import com.example.agregator.entity.additional_services.AbstractAdditionalService;
+import com.example.agregator.entity.location.Location;
 
 import java.util.List;
 
